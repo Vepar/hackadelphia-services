@@ -36,7 +36,7 @@ module.exports = function(models){
       SessionToken: req.body.SessionToken
     }).then(function(user){
         console.log(user.UserId);
-        res.send(user.UserId);
+        res.send({userId: user.UserId});
       }).error(function(err){
           //TODO:LOGGING look into error handling/logging
       });

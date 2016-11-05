@@ -14,7 +14,7 @@ var Sequelize = require('sequelize');
 // var env = process.env.NODE_ENV || 'dev';
 // var config = require('./' + env + 'config.json');
 
-    var sequelize = new Sequelize('hackathondb', 'HackathonUser', 'Password1!', {
+    var sequelize = new Sequelize('hackathondb', 'Hackathonuser', 'Password1!', {
       port: 3306
     });
 
