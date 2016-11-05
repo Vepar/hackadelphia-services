@@ -29,29 +29,30 @@ var Sequelize = require('sequelize');
 
 //load models
 var models = [
-  'User',
-  'Ad',
-  'Market',
-  'Category',
-  'AdImage',
-  'AdState'
+  'Medication',
+  'Patient',
+  'PatientMed',
+  'PatientMedSchedule',
+  'PatientSideEffect'
 ];
+
 models.forEach(function(model){
   module.exports[model] = sequelize.import(model);
 });
 
-
 //create relationships
 (function(m){
-  m.User.hasMany(m.Ad, {foreignKey: 'UserId'});
-  m.Ad.belongsTo(m.User, {foreignKey: 'UserId'});
-  m.Ad.hasMany(m.AdImage, {foreignKey: 'AdId'});
-  m.AdImage.belongsTo(m.Ad, {foreignKey: 'AdId'});
-  m.Category.hasOne(m.Ad, {foreignKey: 'CategoryId'});
-  m.Market.hasOne(m.Ad, {foreignKey: 'MarketId'});
-  m.AdState.hasOne(m.Ad, {foreignKey: 'AdStateId'});
+  m.Medication.belongsToMany(m.Patient, {through: 'PatientMed'});
+
+  // m.User.hasMany(m.Ad, {foreignKey: 'UserId'});
+  // m.Ad.belongsTo(m.User, {foreignKey: 'UserId'});
+  // m.Ad.hasMany(m.AdImage, {foreignKey: 'AdId'});
+  // m.AdImage.belongsTo(m.Ad, {foreignKey: 'AdId'});
+  // m.Category.hasOne(m.Ad, {foreignKey: 'CategoryId'});
+  // m.Market.hasOne(m.Ad, {foreignKey: 'MarketId'});
+  // m.AdState.hasOne(m.Ad, {foreignKey: 'AdStateId'});
 })(module.exports);
 
-sequelize.sync();
-//
-// module.exports.sequelize = sequelize;
+sequelize.sync( force = false);
+
+module.exports.sequelize = sequelize;

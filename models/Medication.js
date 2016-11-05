@@ -1,17 +1,18 @@
 module.exports = function(sequelize, DataTypes) {
-  return  sequelize.define('AdState', {
-    AdStateId: {
+  return sequelize.define('Medication', {
+    NDC: {
       type: DataTypes.INTEGER,
       primaryKey: true,
+      autoIncrement: true,
       allowNull: false
     },
-    AdState: {
+    MedicationName: {
       type: DataTypes.STRING,
-      allowNull: false
+      allownNull: false
     }
   },
   {
-    tableName: 'AdState',
+    tableName: 'Medication',
     freezeTableName: true,
-  }
-);};
+  });
+};

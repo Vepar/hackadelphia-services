@@ -31,11 +31,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //create routing
 var routes = require('./routes/index')(app.get('models'));
-var user = require('./routes/User')(app.get('models'));
-var ad = require('./routes/Ad')(app.get('models'));
+var patient = require('./routes/Patient')(app.get('models'));
 app.use('/', routes);
-app.use('/User', user);
-app.use('/Ad', ad);
+app.use('/Patient', patient);
 
 
 // catch 404 and forward to error handler
